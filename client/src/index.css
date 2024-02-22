@@ -110,8 +110,8 @@ html {
 }
 
 .work-link {
-    width: 250px;
-    height: 250px;
+    width: 175px;
+    height: 175px;
     border-radius: 50%;
     cursor: pointer;
     background: rgba(252,64,103);
