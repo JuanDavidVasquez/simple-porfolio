@@ -6,7 +6,7 @@ function App() {
 
 
   return (
-    <div className='App w-full'>
+    <main className='App w-full overflow-hidden'>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home/>}>
@@ -18,7 +18,7 @@ function App() {
 
       
       </BrowserRouter>
-    </div>
+    </main>
   )
 }
 
