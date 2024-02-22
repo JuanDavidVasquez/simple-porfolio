@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'MontserratAlternatesLight';
+    src: url('../src/assets/fonts/MontserratAlternates-Light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'LatoLight';
+    src: url('../src/assets/fonts/lato/Lato-Light.ttf') format('truetype');
+}
+
+.montserrat {
+    font-family: 'MontserratAlternatesLight', sans-serif;
+}
+.latoLight{
+    font-family: 'LatoLight';
+}
+
+
+/*-------------------
+    Animation Link
+--------------------*/
+  
+.link-container {
+    position: relative;
+    text-decoration: none;
+  }
+  
+  .js-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: black;
+    transition: width 0.5s ease;
+  }
+  
+  .js-line.expand {
+    width: 100%;
+  }
+  
+  .link-container:hover .js-line {
+    width: 100%;
+  }
+  
+  .link-container:not(:hover) .js-line {
+    transition: width 0.5s ease, left 0.5s ease; 
+    left: 100%; 
+    width: 0;
+  }
+  
