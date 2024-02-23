@@ -101,6 +101,14 @@ main{
     overflow-y: hidden;
 }
 
+.section-js{
+    z-index: 5;
+}
+
+.container-section-js{
+    position: relative;
+    z-index: 5;
+}
 
 /*-------------------
   Animation Section
@@ -207,6 +215,23 @@ main{
  display: grid;   
 }
 
+
+/*---------------------
+        Project
+-----------------------*/
+
+.project-title{
+    font-size: var(--header4);
+}
+
+.img-animation-gallery{
+    width: 400px;
+    height: 450px;
+}
+
+
+
+
 /*---------------------
         Footer
 -----------------------*/
@@ -215,3 +240,5 @@ main{
     font-size: var(--header4);
     font-weight: bold;
 }
+
+

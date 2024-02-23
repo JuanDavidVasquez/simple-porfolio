@@ -21,7 +21,7 @@ let params= "sert";
         </li>
         <li>Software Developer</li>
         <li className="flex gap-1">
-          <AnimationLink url="/projects" title="Projects"/>
+          <AnimationLink url="/projects" title="Projects"/>,
           <AnimationLink url="/projects" title="Experience" />
         </li>
       </ul>
