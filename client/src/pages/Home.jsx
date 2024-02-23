@@ -4,6 +4,7 @@ import Intro from "../components/home/Intro";
 import About from "../components/home/About";
 import Works from "../components/home/Works";
 import Footer from "../layouts/Footer";
+import AnimiationIntro from "../components/Animation/AnimiationIntro";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -82,8 +83,8 @@ export default function Home() {
 
   return (
     <div className="home generalScroll">
-     
-      <div className="container-section-js">
+     <AnimiationIntro/>
+      <div className="container-section-js opacity-0">
         <div className="section-js">
           <div className="trigger-js">
             <Intro />

@@ -89,6 +89,20 @@ main{
 
 
 /*-------------------
+        Home
+--------------------*/
+
+
+.home{
+    z-index: 9;
+}
+.homeAffter{
+    height: min-content;
+    overflow-y: hidden;
+}
+
+
+/*-------------------
   Animation Section
 --------------------*/
 

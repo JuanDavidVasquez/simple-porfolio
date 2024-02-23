@@ -1,0 +1,29 @@
+.animationIntro{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    z-index: 9;
+    z-index: 9;
+}
+.container-img-animation-intro{
+
+}
+
+.img-animation-intro{
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+}
+
+.fixed-animation{
+    position: fixed;
+    background-color: transparent;
+    z-index: 1;
+}
+
+
