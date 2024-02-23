@@ -2,7 +2,7 @@ import React from "react";
 
 export default function About() {
   return (
-    <section className="grid grid-cols-12 gap-1 py-7 justify-center items-center px-5 about section-js">
+    <section className="grid grid-cols-12 gap-1 py-7 justify-center items-center px-5 about">
       <div className="latoLight col-start-2 work-link flex justify-center items-center text-white montserrat text-4xl font-bold">
         Work
       </div>
@@ -31,6 +31,23 @@ export default function About() {
         skills and knowledge in the ever-changing world of web development. I
         look forward to collaborating with you to make your digital ideas a
         reality!
+      </div>
+      <div className="i_do col-start-5 col-span-3 py-12 flex justify-between">
+        <ul className="latoLight text-lg">
+          <li className="montserrat text-xl">/ What I do</li>
+          <li>Websites</li>
+          <li>Apps</li>
+          <li>UI/UX Design</li>
+          <li>Crms</li>
+          <li>Ecomers</li>
+        </ul>
+        <ul className="latoLight text-lg">
+        <li className="montserrat text-xl">/Industria</li>
+        <li>Travel</li>
+        <li>Corporate</li>
+        <li>Recruitment</li>
+        <li>BPO</li>
+      </ul>
       </div>
     </section>
   );

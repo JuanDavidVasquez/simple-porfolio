@@ -8,7 +8,7 @@ import Footer from "../layouts/Footer";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Home() {
+export default function Test() {
   useEffect(() => {
     const sections = document.querySelectorAll(".section-js");
 
@@ -19,51 +19,34 @@ export default function Home() {
       ScrollTrigger.create({
         trigger: trigger,
         start: "bottom center",
-        end: "bottom center",
+        end: () => "+=" + section.offsetHeight,
+        toggleClass: { targets: section, className: "fixeds" },
+        markers: true,
+        scrub: 0.5,
+        toggleActions: "play none none reverse",
         onEnter: () => {
-          gsap.to(section, {
-            y: "0%",
-            ease: "none",
-            overwrite: true,
-          });
-          gsap.to(nextSection, {
-            y: "-30%",
-            ease: "none",
-            overwrite: true,
-          });
+          if (nextSection) {
+            gsap.to(nextSection, { y: 0 });
+          }
         },
         onLeave: () => {
-          gsap.to(section, {
-            y: "-100%",
-            ease: "none",
-            overwrite: true,
-          });
+          if (nextSection) {
+            gsap.to(nextSection, { y: "-100%" });
+            section.classList.add("fixeds");
+          }
         },
         onEnterBack: () => {
-          gsap.to(section, {
-            y: "0%",
-            ease: "none",
-            overwrite: true,
-          });
-          gsap.to(nextSection, {
-            y: "-30%",
-            ease: "none",
-            overwrite: true,
-          });
+          if (nextSection) {
+            gsap.to(nextSection, { y: 0 });
+            section.classList.remove("fixeds");
+          }
         },
         onLeaveBack: () => {
-          gsap.to(section, {
-            y: "0%",
-            ease: "none",
-            overwrite: true,
-          });
-          gsap.to(nextSection, {
-            y: "30%",
-            ease: "none",
-            overwrite: true,
-          });
+          if (nextSection) {
+            gsap.to(nextSection, { y: "-100%" });
+            section.classList.add("fixeds");
+          }
         },
-        markers: true,
       });
     });
   }, []);

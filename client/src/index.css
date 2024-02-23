@@ -35,6 +35,9 @@ html {
     font-family: 'LatoLight';
 }
 
+main{
+    background-color: #f5f5f5;
+}
 
 /*-------------------
     Animation Link
@@ -68,6 +71,22 @@ html {
     left: 100%;
     width: 0;
 }
+
+
+/*-------------------
+  Animation Section
+--------------------*/
+
+.fixeds {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: transform 0.5s ease; 
+}
+
+
 
 /*---------------
         Intro
@@ -149,4 +168,21 @@ html {
         font: var(--text);
     }
 
+}
+
+/*--------------------
+        Works
+---------------------*/
+
+.works{
+ display: grid;   
+}
+
+/*---------------------
+        Footer
+-----------------------*/
+
+.city{
+    font-size: var(--header4);
+    font-weight: bold;
 }
