@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { gsap, ScrollTrigger } from "gsap/all";
-import Header from "../layouts/Header";
 import Intro from "../components/home/Intro";
 import About from "../components/home/About";
 import Works from "../components/home/Works";
@@ -9,6 +8,19 @@ import Footer from "../layouts/Footer";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
+
+    useEffect(()=>{
+        gsap.fromTo('.home', {
+            opacity:0,
+            ease: "none",
+            duration:"1s",
+            overwrite: true,
+          },{
+            opacity:1,
+      
+          });
+    },[])
+
   useEffect(() => {
     const sections = document.querySelectorAll(".section-js");
 
@@ -69,8 +81,8 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="home">
-      <Header />
+    <div className="home generalScroll">
+     
       <div className="container-section-js">
         <div className="section-js">
           <div className="trigger-js">
