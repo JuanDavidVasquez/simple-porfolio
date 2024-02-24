@@ -264,9 +264,11 @@ main{
 .imges-animation-gallery{
     width: 250px;
     height: 225px;
+    transition: all .5s ease-out;
 }
-
-
+.imges-animation-gallery:hover{
+    transform: scale(1.2);
+}
 
 
 /*---------------------

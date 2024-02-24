@@ -1,9 +1,42 @@
-import React, { useRef, useState } from "react";
-import gsap from "gsap";
+import React, { useRef, useState, useEffect } from "react";
+import gsap, { Power3 } from "gsap";
 
 export default function ProjectGallery() {
   const containerGalleryRef = useRef(null);
   const [hoveredText, setHoveredText] = useState("");
+  const [maxPosition, setMaxPosition] = useState(900); // Valor predeterminado
+
+  useEffect(() => {
+    function handleResize() {
+      const windowWidth = window.innerWidth;
+      // Ajustar maxPosition según el ancho de la ventana
+      if (windowWidth <= 768) {
+        setMaxPosition(1300); // Para dispositivos móviles o pantallas pequeñas
+      } else {
+        setMaxPosition(900); // Para pantallas más grandes
+      }
+    }
+
+    // Agregar un listener para manejar el cambio de tamaño de la ventana
+    window.addEventListener("resize", handleResize);
+
+    // Llamar a handleResize() una vez al inicio para configurar el maxPosition inicial
+    handleResize();
+
+    const nameProject = document.querySelector(".nameProject");
+
+    gsap.to(nameProject,{
+        duration: .5,
+        y:-70,
+        x: 100,
+        ease:Power3
+    })
+
+    // Eliminar el listener cuando el componente se desmonte
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const handleWheel = (event) => {
     const currentScroll = event.deltaY;
@@ -14,8 +47,7 @@ export default function ProjectGallery() {
 
   const moveImages = (scrollDirection) => {
     const container = containerGalleryRef.current;
-    const imageWidth = container.firstChild.offsetWidth + 20; // 20px gap between images
-    const maxPosition = 900;
+    const imageWidth = container.firstChild.offsetWidth + 20;
 
     let newPosition = "+=" + imageWidth;
     if (scrollDirection === "right") {
@@ -52,10 +84,10 @@ export default function ProjectGallery() {
       className="project-Gallery w-full col-span-10 col-start-2 overflow-hidden"
       onWheel={handleWheel}
     >
-      <span>{hoveredText}</span>
+      <span className="text-4xl font-bold montserrat nameProject">{hoveredText}</span>
       <div
         ref={containerGalleryRef}
-        className="flex gap-10 px-7 container-gallery-projects"
+        className="flex gap-3 px-7 container-gallery-projects"
         style={{ minHeight: "500px", minWidth: "2200px", overflow: "hidden" }}
       >
         <div className="img-animation-gallery">
