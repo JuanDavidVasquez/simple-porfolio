@@ -18,7 +18,7 @@ export default function Projects() {
 },[])
 
   return (
-    <div className='projects w-full grid grid-cols-12 py-10'>
+    <div className='projects w-full grid grid-cols-12 py-5'>
        <h1 className="montserrat w-full col-start-2 col-span-10 py-1 project-title">Projects</h1>
        <ProjectGallery/>
     </div>

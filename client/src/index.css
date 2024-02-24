@@ -219,14 +219,51 @@ main{
 /*---------------------
         Project
 -----------------------*/
+.projects{
+    min-height: 100vh;
+}
 
 .project-title{
     font-size: var(--header4);
 }
 
+.project-Gallery{
+    position: absolute;
+    height: 100vh;
+    display: grid;
+    align-content: end;
+}
+
+.container-gallery-projects{
+    height: 100%;
+}
+
 .img-animation-gallery{
     width: 400px;
     height: 450px;
+    background-color: #111010;
+    display: grid;
+    place-content: center;
+}
+.img-animation-gallery:nth-child(1){
+    background-image: linear-gradient(to right bottom, #000000, #382d38, #5d5d7a, #6797c0, #5fd8f7);
+}
+.img-animation-gallery:nth-child(2){
+    background-image: linear-gradient(to right bottom, #000000, #5b2c2b, #b05d34, #eca521, #ffff00);
+}
+.img-animation-gallery:nth-child(3){
+    background-image: linear-gradient(to right, #000000, #2e1619, #562323, #7d3524, #9f4d1d);
+}
+.img-animation-gallery:nth-child(4){
+    background-image: linear-gradient(to right bottom, #000000, #22181f, #342b40, #344467, #01618a);
+}
+.img-animation-gallery:nth-child(5){
+    background-image: linear-gradient(to right, #000000, #2e1619, #562323, #7d3524, #9f4d1d);
+}
+
+.imges-animation-gallery{
+    width: 250px;
+    height: 225px;
 }
 
 
