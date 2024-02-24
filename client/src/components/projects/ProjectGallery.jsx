@@ -38,12 +38,27 @@ export default function ProjectGallery() {
     };
   }, []);
 
-  const handleWheel = (event) => {
+  const handleWheel = debounce((event) => {
     const currentScroll = event.deltaY;
     const scrollDirection = currentScroll > 0 ? "right" : "left";
     moveImages(scrollDirection);
-    event.preventDefault(); // Prevenir el comportamiento de scroll predeterminado
-  };
+  }, 100);
+  
+  function debounce(func, wait, immediate) {
+    let timeout;
+    return function () {
+      const context = this;
+      const args = arguments;
+      const later = function () {
+        timeout = null;
+        if (!immediate) func.apply(context, args);
+      };
+      const callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) func.apply(context, args);
+    };
+  }
 
   const moveImages = (scrollDirection) => {
     const container = containerGalleryRef.current;
@@ -79,6 +94,37 @@ export default function ProjectGallery() {
     setHoveredText("");
   };
 
+  const detailProject = (e) => {
+    let galleryProject = document.querySelectorAll('.img-animation-gallery');
+    let clickedIndex = Array.from(galleryProject).indexOf(e.currentTarget);
+
+    galleryProject.forEach((element, index) => {
+        if (index !== clickedIndex) {
+            gsap.to(element, {
+                y: "100%",
+                opacity: 0, 
+                duration: 1,
+                ease: "power1.in", 
+                onComplete: () => {
+                    element.style.display = "none"; 
+                }
+            });
+        }
+    });
+
+    // Mostrar el elemento actual con una animación suave
+    gsap.fromTo(galleryProject[clickedIndex], {
+       
+        y: "200%"
+    }, {
+     
+        y: 0,
+        duration: 1,
+        ease: "power1",
+        delay: 1 
+    });
+};
+
   return (
     <section
       className="project-Gallery w-full col-span-10 col-start-2 overflow-hidden"
@@ -90,7 +136,9 @@ export default function ProjectGallery() {
         className="flex gap-3 px-7 container-gallery-projects"
         style={{ minHeight: "500px", minWidth: "2200px", overflow: "hidden" }}
       >
-        <div className="img-animation-gallery">
+        <div 
+        onClick={detailProject}
+        className="img-animation-gallery">
           <img
             className="imges-animation-gallery"
             src="img/skills/reactjs.png"
@@ -99,7 +147,9 @@ export default function ProjectGallery() {
             onMouseLeave={handleMouseLeave}
           />
         </div>
-        <div className="img-animation-gallery">
+        <div
+        onClick={detailProject}
+        className="img-animation-gallery">
           <img
             className="imges-animation-gallery"
             src="img/skills/javascript.png"
@@ -109,7 +159,9 @@ export default function ProjectGallery() {
           />
         </div>
 
-        <div className="img-animation-gallery">
+        <div 
+        onClick={detailProject}
+        className="img-animation-gallery">
           <img
             className="imges-animation-gallery"
             src="img/skills/laravel.png"
@@ -118,7 +170,9 @@ export default function ProjectGallery() {
             onMouseLeave={handleMouseLeave}
           />
         </div>
-        <div className="img-animation-gallery">
+        <div 
+        onClick={detailProject}
+        className="img-animation-gallery">
           <img
             className="imges-animation-gallery"
             src="img/skills/mysql.png"
