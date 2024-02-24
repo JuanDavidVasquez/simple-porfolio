@@ -102,7 +102,6 @@ export default function ProjectGallery() {
         if (index !== clickedIndex) {
             gsap.to(element, {
                 y: "100%",
-                opacity: 0, 
                 duration: 1,
                 ease: "power1.in", 
                 onComplete: () => {
@@ -113,15 +112,14 @@ export default function ProjectGallery() {
     });
 
     // Mostrar el elemento actual con una animación suave
-    gsap.fromTo(galleryProject[clickedIndex], {
-       
+    gsap.fromTo(galleryProject[clickedIndex], {       
         y: "200%"
     }, {
-     
         y: 0,
         duration: 1,
         ease: "power1",
-        delay: 1 
+        delay: 1,
+        height:"600px"
     });
 };
 
