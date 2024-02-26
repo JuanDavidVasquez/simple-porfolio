@@ -1,10 +1,12 @@
 import React, { useRef, useState, useEffect } from "react";
 import gsap, { Power3 } from "gsap";
+import ProjectDetail from "./ProjectDetail";
 
 export default function ProjectGallery() {
   const containerGalleryRef = useRef(null);
   const [hoveredText, setHoveredText] = useState("");
   const [maxPosition, setMaxPosition] = useState(900); // Valor predeterminado
+  const [selectedProject, setSelectedProject] = useState(null); // Estado para almacenar el proyecto seleccionado
 
   useEffect(() => {
     function handleResize() {
@@ -97,6 +99,10 @@ export default function ProjectGallery() {
   const detailProject = (e) => {
     let galleryProject = document.querySelectorAll('.img-animation-gallery');
     let clickedIndex = Array.from(galleryProject).indexOf(e.currentTarget);
+    const projects = ["ReactJS", "JavaScript", "Laravel", "SQL"]; 
+    const detailsProjects = document.querySelector('.container-gallery-projects');
+
+    setSelectedProject(projects[clickedIndex]);
 
     galleryProject.forEach((element, index) => {
         if (index !== clickedIndex) {
@@ -106,6 +112,9 @@ export default function ProjectGallery() {
                 ease: "power1.in", 
                 onComplete: () => {
                     element.style.display = "none"; 
+                    detailsProjects.style.minWidth = "500px";
+                    detailsProjects.style.display = "flex";
+                    detailsProjects.style.alignItems = "flex-end"; 
                 }
             });
         }
@@ -151,7 +160,7 @@ export default function ProjectGallery() {
           <img
             className="imges-animation-gallery"
             src="img/skills/javascript.png"
-            alt="react"
+            alt="javascript"
             onMouseEnter={() => handleMouseEnter("JavaScript")}
             onMouseLeave={handleMouseLeave}
           />
@@ -163,7 +172,7 @@ export default function ProjectGallery() {
           <img
             className="imges-animation-gallery"
             src="img/skills/laravel.png"
-            alt="react"
+            alt="laravel"
             onMouseEnter={() => handleMouseEnter("Laravel")}
             onMouseLeave={handleMouseLeave}
           />
@@ -174,12 +183,18 @@ export default function ProjectGallery() {
           <img
             className="imges-animation-gallery"
             src="img/skills/mysql.png"
-            alt="react"
+            alt="mysql"
             onMouseEnter={() => handleMouseEnter("SQL")}
             onMouseLeave={handleMouseLeave}
           />
         </div>
       </div>
+      {
+        <div className="details-projects">
+        <ProjectDetail selectedProject={selectedProject} />
+        </div>
+      }
+    
     </section>
   );
 }
