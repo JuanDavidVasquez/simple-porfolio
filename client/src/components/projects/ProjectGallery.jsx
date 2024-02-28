@@ -36,7 +36,7 @@ export default function ProjectGallery() {
     },
     {
       urlProject: "onelessonperday/oneLesson.JPG",
-      name:'oneLessonPerDay',
+      name:'OneLessonPerDay',
       composicion: `
                      ReactJS
                      NodeJS
@@ -45,7 +45,7 @@ export default function ProjectGallery() {
                      HTML-CSS
                 
                   `,
-      resumen: "App consultorio veterinario y Etologíco",
+      resumen: "App consultorio veterinario y Etológico",
       proyecto: "https://historys.onelessonperday.com.co/",
     },
     {

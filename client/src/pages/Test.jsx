@@ -21,7 +21,6 @@ export default function Test() {
         start: "bottom center",
         end: () => "+=" + section.offsetHeight,
         toggleClass: { targets: section, className: "fixeds" },
-        markers: true,
         scrub: 0.5,
         toggleActions: "play none none reverse",
         onEnter: () => {

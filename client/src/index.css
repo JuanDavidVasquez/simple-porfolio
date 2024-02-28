@@ -287,6 +287,74 @@ main{
     z-index: 1;
 }
 
+
+@media only screen and (min-width: 1280px) {
+    .resetAnimation{
+        position: fixed !important;
+        top: 50% !important;
+        right: 5% !important;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .detailGalleryProject{
+        top: 25.333333%;
+        left: 5%;
+        width: 100%;
+    }
+    .project-title{
+        padding-top: 4.25rem;
+        font-size: var(--header5);
+    }
+    .resetAnimation{
+        position: fixed !important;
+        top: 50% !important;
+        right: 5% !important;
+    }
+    .nameProject{
+        transform: translate(100px, -55px) !important;
+    }
+}
+
+
+
+/*---------------------
+        Experience
+-----------------------*/
+
+
+.timeline {
+    height: 2px;
+    position: relative;
+  }
+  
+  .timeline-item {
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .timeline-year {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .timeline-line {
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+  }
+  
+
+
 /*---------------------
         Footer
 -----------------------*/
@@ -295,5 +363,3 @@ main{
     font-size: var(--header4);
     font-weight: bold;
 }
-
-

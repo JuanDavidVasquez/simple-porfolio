@@ -30,7 +30,7 @@ export default function ProjectDetail({
 
   useEffect(()=>{
     const resetButton = document.querySelector('.resetAnimation');
-    gsap.to(resetButton,{opacity:1,y:-100})
+    gsap.to(resetButton,{opacity:1,y:-200})
     const detailGalleryProject = document.querySelector('.detailGalleryProject');
     const nameProject = document.querySelector('.nameProject');
     gsap.to(nameProject,{opacity:0})
@@ -65,7 +65,7 @@ export default function ProjectDetail({
           <h1 className="montserrat col-span-5 py-1 project-title">
             {selectedProject}
           </h1>
-          <p className="montserrat w-1/4 text-2xl">
+          <p className="montserrat w-1/5 text-2xl">
             <span className="latoLight text-2xl font-bold">Composición:</span>{" "}
             {composicion}
           </p>

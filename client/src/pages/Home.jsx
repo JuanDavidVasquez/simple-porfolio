@@ -76,7 +76,6 @@ export default function Home() {
             overwrite: true,
           });
         },
-        markers: true,
       });
     });
   }, []);
