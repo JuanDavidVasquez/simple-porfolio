@@ -240,7 +240,7 @@ main{
 
 .img-animation-gallery{
     width: 400px;
-    height: 450px;
+    height: 450px !important;
     background-color: #111010;
     display: grid;
     place-content: center;
@@ -277,7 +277,9 @@ main{
 .aniamtionProject{
 
 }
-
+.resetAnimation{
+    width: fit-content;
+}
 
 /*---------------------
         Footer

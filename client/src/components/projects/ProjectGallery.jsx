@@ -5,24 +5,51 @@ import ProjectDetail from "./ProjectDetail";
 export default function ProjectGallery() {
   const containerGalleryRef = useRef(null);
   const [hoveredText, setHoveredText] = useState("");
-  const [maxPosition, setMaxPosition] = useState(900); // Valor predeterminado
-  const [selectedProject, setSelectedProject] = useState(null); // Estado para almacenar el proyecto seleccionado
+  const [maxPosition, setMaxPosition] = useState(900);
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [projects, setProjects] = useState([
+    {
+      name: "ReactJS",
+      composicion: "Composición de ReactJS",
+      resumen: "Resumen de ReactJS"
+    },
+    {
+      name: "JavaScript",
+      composicion: "Composición de JavaScript",
+      resumen: "Resumen de JavaScript"
+    },
+    {
+      name: "Laravel",
+      composicion: `
+                    
+                     Laravel
+                     ReactJS
+                     PhpMyAdmin
+                     SQL
+                     HTML-CSS
+                
+                  `,
+      resumen: "Resumen de Laravel"
+    },
+    {
+      name: "MySql",
+      composicion: "Composición de MySql",
+      resumen: "Resumen de MySql"
+    },
+  ]);
 
   useEffect(() => {
     function handleResize() {
       const windowWidth = window.innerWidth;
-      // Ajustar maxPosition según el ancho de la ventana
       if (windowWidth <= 768) {
-        setMaxPosition(1300); // Para dispositivos móviles o pantallas pequeñas
+        setMaxPosition(1300);
       } else {
-        setMaxPosition(900); // Para pantallas más grandes
+        setMaxPosition(900);
       }
     }
 
-    // Agregar un listener para manejar el cambio de tamaño de la ventana
     window.addEventListener("resize", handleResize);
 
-    // Llamar a handleResize() una vez al inicio para configurar el maxPosition inicial
     handleResize();
 
     const nameProject = document.querySelector(".nameProject");
@@ -31,10 +58,9 @@ export default function ProjectGallery() {
         duration: .5,
         y:-70,
         x: 100,
-        ease:Power3
-    })
+        ease: Power3
+    });
 
-    // Eliminar el listener cuando el componente se desmonte
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -45,7 +71,7 @@ export default function ProjectGallery() {
     const scrollDirection = currentScroll > 0 ? "right" : "left";
     moveImages(scrollDirection);
   }, 100);
-  
+
   function debounce(func, wait, immediate) {
     let timeout;
     return function () {
@@ -71,7 +97,6 @@ export default function ProjectGallery() {
       newPosition = "-=" + imageWidth;
     }
 
-    // Limitar la nueva posición dentro del rango máximo
     newPosition = Math.min(
       0,
       Math.max(
@@ -81,10 +106,9 @@ export default function ProjectGallery() {
       )
     );
 
-    // Animate the container to the new position
     gsap.to(container, {
       x: newPosition,
-      duration: 1, // Duración de la animación
+      duration: 1,
     });
   };
 
@@ -99,102 +123,106 @@ export default function ProjectGallery() {
   const detailProject = (e) => {
     let galleryProject = document.querySelectorAll('.img-animation-gallery');
     let clickedIndex = Array.from(galleryProject).indexOf(e.currentTarget);
-    const projects = ["ReactJS", "JavaScript", "Laravel", "SQL"]; 
-    const detailsProjects = document.querySelector('.container-gallery-projects');
+    const selectedProjectDetails = projects[clickedIndex];
+    const { name, composicion, resumen } = selectedProjectDetails;
 
-    setSelectedProject(projects[clickedIndex]);
+    setSelectedProject(name);
 
     galleryProject.forEach((element, index) => {
-        if (index !== clickedIndex) {
-            gsap.to(element, {
-                y: "100%",
-                duration: 1,
-                ease: "power1.in", 
-                onComplete: () => {
-                    element.style.display = "none"; 
-                    detailsProjects.style.minWidth = "500px";
-                    detailsProjects.style.display = "flex";
-                    detailsProjects.style.alignItems = "flex-end"; 
-                }
-            });
-        }
+      if (index !== clickedIndex) {
+          gsap.to(element, {
+              y: "100%",
+              duration: 1,
+              ease: "power1.in", 
+              onComplete: () => {
+                  element.style.display = "none";
+              }
+          });
+      }
     });
 
-    // Mostrar el elemento actual con una animación suave
-    gsap.fromTo(galleryProject[clickedIndex], {       
-        y: "200%"
+    gsap.fromTo(galleryProject[clickedIndex], {
+      y: "200%"
     }, {
+      y: 0,
+      duration: 1,
+      ease: "power1",
+      delay: 1,
+      height: "600px"
+    });
+  };
+
+  const resetAnimation = () => {
+    let galleryProject = document.querySelectorAll('.img-animation-gallery');
+    const detailGalleryProject = document.querySelector('.detailGalleryProject');
+    const nameProject = document.querySelector('.nameProject');
+    const resetButton = document.querySelector('.resetAnimation');
+    gsap.to(resetButton,{opacity:0})
+    gsap.to(nameProject,{opacity:1})
+    gsap.to(detailGalleryProject,{opacity:0});
+
+    galleryProject.forEach((element) => {
+      element.style.display = "grid";
+      gsap.to(element, {
         y: 0,
         duration: 1,
         ease: "power1",
-        delay: 1,
-        height:"600px"
+        height: "auto"
+      });
     });
-};
+  };
+
+  const [expand, setExpand] = useState(false);
+  const handleMouseEnters = () => {
+    setExpand(true);
+  };
+
+  const handleMouseLeaves = () => {
+    setExpand(false);
+  };
 
   return (
-    <section
-      className="project-Gallery w-full col-span-10 col-start-2 overflow-hidden"
-      onWheel={handleWheel}
-    >
+    <section className="project-Gallery w-full col-span-10 col-start-2 overflow-hidden" onWheel={handleWheel}>
       <span className="text-4xl font-bold montserrat nameProject">{hoveredText}</span>
-      <div
-        ref={containerGalleryRef}
-        className="flex gap-3 px-7 container-gallery-projects"
-        style={{ minHeight: "500px", minWidth: "2200px", overflow: "hidden" }}
-      >
-        <div 
-        onClick={detailProject}
-        className="img-animation-gallery">
-          <img
-            className="imges-animation-gallery"
-            src="img/skills/reactjs.png"
-            alt="react"
-            onMouseEnter={() => handleMouseEnter("ReactJS")}
-            onMouseLeave={handleMouseLeave}
-          />
-        </div>
-        <div
-        onClick={detailProject}
-        className="img-animation-gallery">
-          <img
-            className="imges-animation-gallery"
-            src="img/skills/javascript.png"
-            alt="javascript"
-            onMouseEnter={() => handleMouseEnter("JavaScript")}
-            onMouseLeave={handleMouseLeave}
-          />
-        </div>
 
-        <div 
-        onClick={detailProject}
-        className="img-animation-gallery">
-          <img
-            className="imges-animation-gallery"
-            src="img/skills/laravel.png"
-            alt="laravel"
-            onMouseEnter={() => handleMouseEnter("Laravel")}
-            onMouseLeave={handleMouseLeave}
-          />
-        </div>
-        <div 
-        onClick={detailProject}
-        className="img-animation-gallery">
-          <img
-            className="imges-animation-gallery"
-            src="img/skills/mysql.png"
-            alt="mysql"
-            onMouseEnter={() => handleMouseEnter("SQL")}
-            onMouseLeave={handleMouseLeave}
-          />
-        </div>
+      <div className="w-full text-center">
+
+        <button onClick={resetAnimation} 
+        className="link-container resetAnimation"
+        onMouseEnter={handleMouseEnters}
+        onMouseLeave={handleMouseLeaves}
+        >
+        Gallery Projects
+        <div className={`line js-line ${expand ? "expand" : ""}`}></div>
+        </button>
+      
       </div>
-      {
-        <div className="details-projects">
-        <ProjectDetail selectedProject={selectedProject} />
-        </div>
-      }
-    
+ 
+     
+
+
+
+      <div ref={containerGalleryRef} className="flex gap-3 px-7 container-gallery-projects" style={{ minHeight: "500px", minWidth: "2200px", overflow: "hidden" }}>
+        {projects.map((project, index) => (
+          <div key={index} onClick={detailProject} className="img-animation-gallery rounded-3xl shadow-sm shadow-slate-400 hover:shadow-transparent">
+            <img
+              className="imges-animation-gallery"
+              src={`img/skills/${project.name.toLowerCase()}.png`}
+              alt={project.name}
+              onMouseEnter={() => handleMouseEnter(project.name)}
+              onMouseLeave={handleMouseLeave}
+            />
+          </div>
+        ))}
+      </div>
+      <div className="details-projects">
+        <ProjectDetail
+          selectedProject={selectedProject}
+          composicion={selectedProject && projects.find(project => project.name === selectedProject).composicion}
+          resumen={selectedProject && projects.find(project => project.name === selectedProject).resumen}
+        />
+      </div>
+     
     </section>
   );
 }
