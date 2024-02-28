@@ -241,11 +241,10 @@ main{
 .img-animation-gallery{
     width: 400px;
     height: 450px !important;
-    background-color: #111010;
     display: grid;
     place-content: center;
 }
-.img-animation-gallery:nth-child(1){
+/* .img-animation-gallery:nth-child(1){
     background-image: linear-gradient(to right bottom, #000000, #382d38, #5d5d7a, #6797c0, #5fd8f7);
 }
 .img-animation-gallery:nth-child(2){
@@ -259,15 +258,17 @@ main{
 }
 .img-animation-gallery:nth-child(5){
     background-image: linear-gradient(to right, #000000, #2e1619, #562323, #7d3524, #9f4d1d);
-}
+} */
 
 .imges-animation-gallery{
-    width: 250px;
-    height: 225px;
+    width: 400px;
+    height: 325px;
+    position: relative;
+    z-index: 7;
     transition: all .5s ease-out;
 }
 .imges-animation-gallery:hover{
-    transform: scale(1.2);
+    transform: scale(1.5);
 }
 
 .deleteProject{
@@ -279,6 +280,11 @@ main{
 }
 .resetAnimation{
     width: fit-content;
+}
+
+.detailGalleryProject{
+    position: absolute;
+    z-index: 1;
 }
 
 /*---------------------

@@ -1,14 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import gsap from "gsap";
 
 export default function ProjectDetail({
   selectedProject,
   composicion,
   resumen,
+  proyecto,
 }) {
 
   useEffect(()=>{
-    console.log(selectedProject)
     const detailGalleryProject = document.querySelector('.detailGalleryProject');
     const nameProject = document.querySelector('.nameProject');
     gsap.to(nameProject,{opacity:0})
@@ -30,7 +30,7 @@ export default function ProjectDetail({
 
   useEffect(()=>{
     const resetButton = document.querySelector('.resetAnimation');
-    gsap.to(resetButton,{opacity:1})
+    gsap.to(resetButton,{opacity:1,y:-100})
     const detailGalleryProject = document.querySelector('.detailGalleryProject');
     const nameProject = document.querySelector('.nameProject');
     gsap.to(nameProject,{opacity:0})
@@ -40,28 +40,47 @@ export default function ProjectDetail({
         opacity:1,
         y:0,
         x:"0%",
+        zIndex:1,
         ease:"bounce.in",
         duration:2
       })
     }})
 
    
-
   },[selectedProject])
 
+  const [expand, setExpand] = useState(false);
+  const handleMouseEnters = () => {
+    setExpand(true);
+  };
+
+  const handleMouseLeaves = () => {
+    setExpand(false);
+  };
 
   return (
-    <div className="absolute top-1/3 right-1/3 detailGalleryProject">
+    <div className="absolute top-1/3 left-1/3 detailGalleryProject">
       {selectedProject && (
         <div>
-          <h1 className="montserrat col-start-4 col-span-5 py-1 project-title">
+          <h1 className="montserrat col-span-5 py-1 project-title">
             {selectedProject}
           </h1>
-          <p className="montserrat w-1/4">
+          <p className="montserrat w-1/4 text-2xl">
             <span className="latoLight text-2xl font-bold">Composición:</span>{" "}
             {composicion}
           </p>
-          <p>Resumen: {resumen}</p>
+          <p className="montserrat text-2xl">
+          <span className="latoLight text-2xl font-bold">Resumen:</span> {resumen}</p>
+          {selectedProject !== 'oneLessonPerDay' &&
+          <a href={proyecto} target="blank_"
+          onMouseEnter={handleMouseEnters}
+          onMouseLeave={handleMouseLeaves}
+          className="link-container"
+          >
+          Go to Project!
+          <div className={`line js-line ${expand ? "expand" : ""}`}></div>
+          </a>
+        }
         </div>
       )}
     </div>

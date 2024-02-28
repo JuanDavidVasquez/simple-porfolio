@@ -9,32 +9,57 @@ export default function ProjectGallery() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [projects, setProjects] = useState([
     {
-      name: "ReactJS",
-      composicion: "Composición de ReactJS",
-      resumen: "Resumen de ReactJS"
-    },
-    {
-      name: "JavaScript",
-      composicion: "Composición de JavaScript",
-      resumen: "Resumen de JavaScript"
-    },
-    {
-      name: "Laravel",
+      urlProject: "adoption/adoption.JPG",
+      name:'adoption',
       composicion: `
-                    
-                     Laravel
                      ReactJS
-                     PhpMyAdmin
-                     SQL
+                     Laravel
+                     MySql
+                     Gsap
                      HTML-CSS
                 
                   `,
-      resumen: "Resumen de Laravel"
+      resumen: "App consultorio veterinario y Etologíco",
+      proyecto: "https://historys.onelessonperday.com.co/",
     },
     {
-      name: "MySql",
-      composicion: "Composición de MySql",
-      resumen: "Resumen de MySql"
+      urlProject: "cultura/cultura.JPG",
+      name:'Cultura',
+      composicion: `
+                     HTML-CSS
+                     JS Vanilla
+                     JSON
+                     Gsap                    
+                  `,
+      resumen: "Landing Page Es Cultura Local-Bogotá 2023",
+      proyecto: "https://historys.onelessonperday.com.co/",
+    },
+    {
+      urlProject: "onelessonperday/oneLesson.JPG",
+      name:'oneLessonPerDay',
+      composicion: `
+                     ReactJS
+                     NodeJS
+                     MongoDB
+                     Tailwind
+                     HTML-CSS
+                
+                  `,
+      resumen: "App consultorio veterinario y Etologíco",
+      proyecto: "https://historys.onelessonperday.com.co/",
+    },
+    {
+      urlProject: "innclod/innclod.JPG",
+      name: "innclod",
+      composicion:  `
+                      ReactJS
+                      Laravel Passport
+                      MySql
+                      Material UI
+                      HTML-CSS
+                  `,
+      resumen: "Test innclod",
+      proyecto: "https://historys.onelessonperday.com.co/",
     },
   ]);
 
@@ -159,7 +184,7 @@ export default function ProjectGallery() {
     const resetButton = document.querySelector('.resetAnimation');
     gsap.to(resetButton,{opacity:0})
     gsap.to(nameProject,{opacity:1})
-    gsap.to(detailGalleryProject,{opacity:0});
+    gsap.to(detailGalleryProject,{opacity:0, zIndex:-1});
 
     galleryProject.forEach((element) => {
       element.style.display = "grid";
@@ -204,10 +229,10 @@ export default function ProjectGallery() {
 
       <div ref={containerGalleryRef} className="flex gap-3 px-7 container-gallery-projects" style={{ minHeight: "500px", minWidth: "2200px", overflow: "hidden" }}>
         {projects.map((project, index) => (
-          <div key={index} onClick={detailProject} className="img-animation-gallery rounded-3xl shadow-sm shadow-slate-400 hover:shadow-transparent">
+          <div key={index} onClick={detailProject} className="img-animation-gallery rounded-3xl overflow-hidden">
             <img
               className="imges-animation-gallery"
-              src={`img/skills/${project.name.toLowerCase()}.png`}
+              src={`img/projects/${project.urlProject}`}
               alt={project.name}
               onMouseEnter={() => handleMouseEnter(project.name)}
               onMouseLeave={handleMouseLeave}
@@ -216,11 +241,13 @@ export default function ProjectGallery() {
         ))}
       </div>
       <div className="details-projects">
-        <ProjectDetail
-          selectedProject={selectedProject}
-          composicion={selectedProject && projects.find(project => project.name === selectedProject).composicion}
-          resumen={selectedProject && projects.find(project => project.name === selectedProject).resumen}
-        />
+      <ProjectDetail
+      selectedProject={selectedProject}
+      composicion={selectedProject && projects.find(project => project.name === selectedProject)?.composicion}
+      resumen={selectedProject && projects.find(project => project.name === selectedProject)?.resumen}
+      proyecto={selectedProject && projects.find(project => project.name === selectedProject)?.proyecto}
+    />
+    
       </div>
      
     </section>
