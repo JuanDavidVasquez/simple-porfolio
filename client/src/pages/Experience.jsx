@@ -4,8 +4,8 @@ import 'react-vertical-timeline-component/style.min.css';
 
 export default function Experience() {
   return (
-    <div className='w-full py-20 bg-black bg-opacity-80 text-white'>
-      <h1 className='montserrat text-9xl text-center pb-10'>Experience</h1>
+    <div className='w-full py-20 bg-black bg-opacity-70 text-white'>
+      <h1 className='montserrat text-9xl text-center pb-10 title-experience'>Experience</h1>
       <VerticalTimeline>
         <VerticalTimelineElement
           className="vertical-timeline-element text-gray-500"
@@ -29,18 +29,21 @@ export default function Experience() {
           date="2022"
           iconStyle={{background: 'url("img/icons/iconLaravel.png")', backgroundSize: "cover" }}
         >
-          <h3 className="vertical-timeline-element-title">CRM</h3>
+          <h3 className="vertical-timeline-element-title">CRM - Inclod - AppTask</h3>
           <p>CRM creation and administration for Claro and Telefonica BPO allies - Movistar.</p>
+          <p>App in charge of managing a document management system</p>
+          <p>System responsible for creating projects and assigning tasks to project collaborators</p>
         </VerticalTimelineElement>
         <VerticalTimelineElement
           className="vertical-timeline-element text-gray-500"
           date="2023"
           iconStyle={{background: 'url("img/icons/iconJava.gif")', backgroundSize: "cover" }}
         >
-          <h3 className="vertical-timeline-element-title">Intranet - Coffe - Soy Cultura Local</h3>
+          <h3 className="vertical-timeline-element-title">Intranet - Coffe - Soy Cultura Local - App Adoption</h3>
           <p>Intranet: Creation and implementation of the Auth and Time Manager modules.</p>
           <p>Coffee: Creation and implementation of the coffee shop sales application</p>
           <p>Landing page creation I am local culture Bogotá 2023</p>
+          <p>Canine and feline adoption system</p>
         </VerticalTimelineElement>
         <VerticalTimelineElement
           className="vertical-timeline-element text-gray-500"

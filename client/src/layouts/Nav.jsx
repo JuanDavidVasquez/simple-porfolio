@@ -14,12 +14,12 @@ export default function Nav() {
   };
 let params= "sert";
   return (
-    <nav className="px-10 py-4 montserrat text-xl">
+    <nav className="px-10 py-4 montserrat text-xl title-nav">
       <ul className="flex justify-between items-center">
         <li>
           <AnimationLink url="/" title="Juan Vasquez" />
         </li>
-        <li>Software Developer</li>
+        <li className="softwareD">Software Developer</li>
         <li className="flex gap-1">
           <AnimationLink url="/projects" title="Projects"/>,
           <AnimationLink url="/experience" title="Experience" />

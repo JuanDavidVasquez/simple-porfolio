@@ -87,6 +87,21 @@ main{
     width: 0;
 }
 
+@media only screen and (min-width: 1408px) {
+    .title-nav{
+        font-size: var(--header5);
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .title-nav{
+        font-size: calc(.7rem + 1vw);
+    }
+    .softwareD{
+        display: none;
+    }
+}
+
 
 /*-------------------
         Home
@@ -134,6 +149,13 @@ main{
 
 .title-intro {
     font-size: var(--header1);
+}
+@media only screen and (max-width: 900px) {
+
+    .title-intro {
+        font-size: var(--header2);
+    }
+
 }
 
 @media only screen and (max-width: 600px) {
@@ -322,37 +344,12 @@ main{
         Experience
 -----------------------*/
 
+@media only screen and (max-width: 600px) {
+    .title-experience{
+        font-size: var(--header5);
+    }
+}
 
-.timeline {
-    height: 2px;
-    position: relative;
-  }
-  
-  .timeline-item {
-    width: 20px;
-    height: 20px;
-    background-color: white;
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  
-  .timeline-year {
-    position: absolute;
-    bottom: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  
-  .timeline-line {
-    width: 100%;
-    height: 2px;
-    background-color: white;
-    position: absolute;
-    top: 50%;
-  }
-  
 
 
 /*---------------------

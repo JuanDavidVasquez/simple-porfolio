@@ -20,7 +20,7 @@ export default function ProjectGallery() {
                 
                   `,
       resumen: "App consultorio veterinario y Etologíco",
-      proyecto: "https://historys.onelessonperday.com.co/",
+      proyecto: "https://adoptions-client.onelessonperday.com.co/",
     },
     {
       urlProject: "cultura/cultura.JPG",
@@ -46,7 +46,7 @@ export default function ProjectGallery() {
                 
                   `,
       resumen: "App consultorio veterinario y Etológico",
-      proyecto: "https://historys.onelessonperday.com.co/",
+      proyecto: "https://onelessonperday.com.co/",
     },
     {
       urlProject: "innclod/innclod.JPG",
@@ -59,7 +59,18 @@ export default function ProjectGallery() {
                       HTML-CSS
                   `,
       resumen: "Test innclod",
-      proyecto: "https://historys.onelessonperday.com.co/",
+      proyecto: "https://innclod.onelessonperday.com.co/",
+    },
+    {
+      urlProject: "/profolio20241.JPG",
+      name: "Portfolio 2024-1",
+      composicion:  `
+                      ReactJS
+                      GSAP
+                      HTML-CSS
+                  `,
+      resumen: "Portfolio",
+      proyecto: "https://portfolio.onelessonperday.com.co/",
     },
   ]);
 
